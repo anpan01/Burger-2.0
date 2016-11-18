@@ -4,10 +4,7 @@ var router  = express.Router();
 
 var models = require('../models');
 
-// router.get('/', function(req, res) {
-//     res.render('index');
-// });
-
+//displaying all burgers to the page, devoured and !devoured
 router.get('/', function(req, res){
 	models.Burgers.findAll()
 	.then(function (availBurgs){
@@ -16,23 +13,32 @@ router.get('/', function(req, res){
 	})
 });
 
+//adding a new burgername
 router.post('/insertOne', function (req, res) {
-	models.Burgers.
-
-});
-
-router.put('/updateOne/:id', function(req, response){
-	var burgerId = req.params.id;
-	models.Burgers.update({updatedAt:{id: burgerId}}, {where: {devoured: 1}})
-	.then(function(devouredBurg){
-		console.log('devouredBurg', devouredBurg);
-		var devouredToPage = {burger: devouredBurg};
-		return response.redirect('/');
+	var newBurg = req.body.burger_name;
+	models.Burgers.create({
+		burger_name: newBurg,
+		devoured: false
+	})
+	.then(function(){
+		return res.redirect('/');
 	})
 });
 
+router.put('/updateOne/:id', function(req, res){
+	var burgerId = req.params.id;
+	models.Burgers.findOne({where: {id: burgerId}})
+		.then(function(eatBurg){
+			eatBurg.update({devoured: 1})
+		})
+		.then(function(){
+			return res.redirect('/');
+		})
+});
 
+//is row is updated, why can't i just redirect the page, and have the burger get placed on the devoured side? 
+//not getting updated in the mysql database...
 
-module.exports = router
+module.exports = router;
 
 
