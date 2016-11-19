@@ -25,45 +25,12 @@ var routes = require('./controllers/burger_controller.js');
 app.use('/', routes);
 
 
-
-//========================================================
-//creating the models and burgers
-
 var models = require('./models');
 
 var sequelizeConnection = models.sequelize;
 
-//types of burgers(columns in my burgers table under burger2_db)
-var hopdoddy;
-var bigMac;
-var tripCheese;
+sequelizeConnection.sync();
 
-//i say drop them special foreign keys atm!
-// sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
-// 	.then(function (){
-// 		//creating the tables using .sync
-// 		return sequelizeConnection.sync({forcec:true})
-// 	})
-// 	.then(function(){
-// 		return models.Burgers.create(
-// 		{
-// 			burger_name: "hopdoddy",
-// 			devoured: false
-// 		})
-// 	})
-// 	.then(function(){
-// 		return models.Burgers.create({
-// 			burger_name: "bigMac",
-// 			devoured: false
-// 		})
-// 	})
-// 	.then(function (){
-// 		return models.Burgers.create({
-// 			burger_name: "tripCheese",
-// 			devoured: false
-// 		})
-// 	});
-//for testing...
 
 app.listen(3000, function(){
 	console.log("Listening on port 3000")

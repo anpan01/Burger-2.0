@@ -2,11 +2,12 @@
 module.exports = function(sequelize, DataTypes) {
   var Burgers = sequelize.define('Burgers', {
     burger_name: DataTypes.STRING,
-    devoured: DataTypes.BOOLEAN
+    devoured: DataTypes.BOOLEAN,
+    customer: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Burgers.hasOne(models.Customers);
       }
     }
   });

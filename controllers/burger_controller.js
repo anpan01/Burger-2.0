@@ -9,6 +9,7 @@ router.get('/', function(req, res){
 	models.Burgers.findAll()
 	.then(function (availBurgs){
 		var burgersToPage = {burger: availBurgs};
+
 		return res.render('index', burgersToPage);
 	})
 });
@@ -25,19 +26,22 @@ router.post('/insertOne', function (req, res) {
 	})
 });
 
+//devouring a burger
 router.put('/updateOne/:id', function(req, res){
-	var burgerId = req.params.id;
+	var burgerId = req.params.id; //on path 
+	var customer = req.body.customer; //inside form
+	models.Customers.create({name: customer})
+			.then(function(customer){
+				customer.update({BurgerId: burgerId})
+			})
 	models.Burgers.findOne({where: {id: burgerId}})
 		.then(function(eatBurg){
-			eatBurg.update({devoured: 1})
+			eatBurg.update({devoured: 1, customer: customer}) //formula field
 		})
 		.then(function(){
 			return res.redirect('/');
 		})
 });
-
-//is row is updated, why can't i just redirect the page, and have the burger get placed on the devoured side? 
-//not getting updated in the mysql database...
 
 module.exports = router;
 

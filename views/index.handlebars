@@ -13,7 +13,9 @@
 					<li>
 						{{this.burger_name}}
 						<form action = "/updateOne/{{this.id}}?_method=PUT" method="POST">
-							<input type='hidden' name="notDevoured" value='false'>
+							<input type='hidden' name="notDevoured" value='false'> 
+							<!-- what is this line? ^^ -->
+							<input name="customer" placeholder="John Customer">
 							<button type="submit">Devoure</button>
 						</form>
 					</li>
@@ -40,7 +42,7 @@
 				<!-- //if devoured = true -->
 				{{#if this.devoured}} 
 					<li>
-						{{this.burger_name}}
+						{{this.burger_name}} devoured by {{this.customer}}!
 					</li>
 				{{/if}}
 			{{/each}}
