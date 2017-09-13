@@ -1,7 +1,7 @@
 # Devoure the Burger
 A full stack restaurant like application.
 
-###[Demo Me!](https://guarded-sierra-71872.herokuapp.com/)
+### [Demo Me Here!](https://guarded-sierra-71872.herokuapp.com/)
 
 ### How it works
 
@@ -14,14 +14,8 @@ A full stack restaurant like application.
 ### Technologies:
 * Server - Node.js, Express framework
 * Database - MySql
-* Client - Express-handlebars
+* Client - Express-handlebars, HTML, CSS
 * Npm modules: express, mysql, express-handlebars, body-parser, path, method-overide
-
-### Design
-MVC design pattern and Server side rendering are used. 
-* Model - Generic ORM and Custom orm are created to model the database. Custom orm calls the generic orm.
-* Views- Views are created using express-handlebars, HTML, CSS
-* Controller - Requests coming to the server are handled by the controller/router which in turn communicates with model to get data and passes it to the views. 
 
 ### Challenges faced
 
@@ -35,7 +29,9 @@ MVC design pattern and Server side rendering are used.
 
 * The app will store every burger in a mysql database, whether devoured or not.
 
-### Directory structure:
+![site preview](https://github.com/An26/Burger-2.0/blob/master/public/assets/img/Screen%20Shot%202017-09-13%20at%2011.24.52%20AM.png)
+
+### MVC Directory structure:
 ```
 .
 ├── config
@@ -71,7 +67,6 @@ MVC design pattern and Server side rendering are used.
     └── layouts
         └── main.handlebars
 ```
-
 
 
 #### Developed by An Huynh :)
