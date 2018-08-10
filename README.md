@@ -1,4 +1,4 @@
-# Devoure the Burger
+# Devour the Burger
 A full stack app that interacts with the server and database.
 
 ### [Demo Me Here!](https://guarded-sierra-71872.herokuapp.com/)
